@@ -1,4 +1,5 @@
 const idSession = sessionStorage.getItem('id');
+
 console.log(idSession)
 
 const url = "http://localhost:3001/"
@@ -36,10 +37,6 @@ function addInfo(data){
         document.getElementById('statusPedido').innerHTML = 'Preparando seu pedido';
         document.getElementById('statusPedido').style= "font-weight: bold; color: black"
     } else if(statusOrder == 3){
-        const music = new Audio('images/audio.mp3');
-        music.play();
-        music.loop =true
-        document.querySelector('body').appendChild(music);
         document.getElementById('statusPedido').innerHTML = 'Pedido pronto para retirada';
         document.getElementById('statusPedido').style= "font-weight: bold; color: black"
     } else if(statusOrder == 4){

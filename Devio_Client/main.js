@@ -9,7 +9,6 @@ class Products {
     }
 }
 
-
 function getProducts () {
     axios.get(url+ "inicio/produtos")
         .then(response=>{
@@ -298,7 +297,8 @@ function postOrder () {
     var tableOrder = parseInt(document.getElementById('mesaOrder').value);
     var observationOrder = document.getElementById("observationOrder").value;
     var formOfPaymentOrder = document.querySelector("select[name='opcaoPagamento'] option:checked").text;
-    var productsOrderSendX = document.getElementById('order').childNodes;
+    var productsOrderSendX = document.getElementById('order').childNodes; 
+
     var arrayTeste = [];
     
     if(productsOrderSendX.length == 0){
@@ -344,7 +344,6 @@ function postOrder () {
                 arrayTeste.push("624da9dd977b9b9e0ce9bee0")
             } 
         }
-
             
         
     axios.post(url+ "realizarPedido", {

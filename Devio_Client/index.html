@@ -28,7 +28,7 @@
             text-align: center;
         }
         header{
-            height: 100px;
+            height: 80px;
             position: relative;
             background-color: white;
             box-sizing: border-box;
@@ -133,7 +133,7 @@
     .order{
         overflow-y: scroll;
         box-shadow: 0 0 5px rgba(0,0,0,0.3);
-        height: 250px;
+        height: 300px;
     }
        .pesquisa{
            display: flex;
@@ -189,12 +189,8 @@
                     <div class="order" id="order"></div>
                     <div class="info">
                     <div id="valorOrder" style="display: flex; justify-content: space-between;">
-                        <p>Valor</p>
-                        <p>R$ 0,00</p>
-                    </div>
-                    <div style="display: flex; justify-content: space-between;">
-                        <p>Troco</p>
-                        <p>0</p>
+                        <p>Valor Total</p>
+                        <p id="valor">R$ 0,00</p>
                     </div>
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <p>Forma de Pagamento</p>
