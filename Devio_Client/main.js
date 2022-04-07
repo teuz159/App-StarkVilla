@@ -359,7 +359,7 @@ function postOrder () {
             const data = response.data;
             idOrder = data._id;
             sessionStorage.setItem('id', idOrder);
-            window.location.href = "http://127.0.0.1:5500/order.html";
+            window.location.href = "http://127.0.0.1:5500/Devio_Client/order.html";
     })        
     .catch(error => console.log(error))
     }

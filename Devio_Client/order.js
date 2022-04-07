@@ -45,7 +45,7 @@ function addInfo(data){
     } else if(statusOrder == 4){
         document.getElementById('statusPedido').innerHTML = 'Pedido Finalizado';
         document.getElementById('statusPedido').style= "font-weight: bold; color: #05FF29"
-        window.setInterval(()=>{window.location.href = "http://127.0.0.1:5500/index.html";}, 2000);
+        window.setInterval(()=>{window.location.href = "http://127.0.0.1:5500/Devio_Client/index.html";}, 2000);
     }
 }
 
