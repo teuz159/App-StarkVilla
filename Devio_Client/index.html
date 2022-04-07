@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stark Villa - Realize seu pedido</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="main.js" type="text/javascript" async></script>
+
+    <style>
+        body::-webkit-scrollbar{
+            width: 12px;
+            border: 1px solid rgb(200,200,200);
+             display: none;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: Montserrat;
+        }
+        .fundo{
+            height: 100vh;
+            background-color: #5E06A1;
+            display: grid;
+            grid-template-columns: 60% auto;
+            grid-template-rows: auto auto;
+            text-align: center;
+        }
+        header{
+            height: 100px;
+            position: relative;
+            background-color: white;
+            box-sizing: border-box;
+            display: flex;
+            padding-left: 10px;
+            padding-right: 10px;
+            justify-content: space-between;
+            align-items: center;
+            grid-column-start: 1;
+            grid-column-end: 3;
+            grid-row-start: 1;
+            grid-row-end: 2;
+        }
+       section{
+            height: auto;
+            box-sizing: border-box;
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 2;
+            grid-row-end: 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+       }
+       aside{
+            height: auto;
+            box-sizing: border-box;
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 2;
+            grid-row-end: 3;
+            background-color: #5E06A1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+       }
+
+       .produtos{
+        box-sizing: border-box;
+        background-color: #5E06A1;
+        width: 100%;
+        height: 100%;
+        padding: 15px;
+       }
+       .deco{
+           border: 1px solid white;
+           padding: 10px;
+           width: 80%;
+           border-radius: 5px;
+       }
+       .pedido{
+        background-color: white;
+        box-sizing: border-box;
+        box-shadow: 0 0 5px rgba(0,0,0,0.8);
+        padding: 15px;
+        border-radius: 5px;
+       }
+       .titulo{
+           font-size: 30px;
+           font-weight: bold;
+           color: #5E06A1;
+       }
+       .info{
+           text-align: start;
+       }
+       p{
+           color: black;
+           font-weight: bold;
+       }
+       input{
+           width: 20%;
+           padding: 2px;
+       }
+
+       .info div{
+           margin: 5px;
+       }
+       .listaProdutos{
+           box-sizing: border-box;
+           display: grid;
+           grid-template-columns: 1fr 1fr 1fr;
+           text-align: center;
+           padding: 10px;
+           background-color: white;
+           margin-top: 15px;
+           padding-bottom: 40px;
+           overflow-y: scroll;
+           box-shadow: 0 0 5px rgba(0,0,0,0.3);
+           height: 600px;
+       }
+       .listaProdutos::-webkit-scrollbar{
+    width: 12px;
+    border: 1px solid rgb(200,200,200);
+    display: block;
+}
+
+       .order::-webkit-scrollbar{
+    width: 12px;
+    border: 1px solid rgb(200,200,200);
+    display: none;
+}
+    .order{
+        overflow-y: scroll;
+        box-shadow: 0 0 5px rgba(0,0,0,0.3);
+        height: 250px;
+    }
+       .pesquisa{
+           display: flex;
+           justify-content: center;
+       }
+       .button{
+           display: flex;
+           justify-content: center;
+           padding-top: 20px;
+       }
+       .buttonPedido{
+           width: 60%;
+           padding: 2%;
+           border-radius: 15px;
+           border: 1px solid #5E06A1;
+           background-color: white;
+           color: #5E06A1;
+           font-size: 20px;
+           font-weight: bold;
+           cursor: pointer;
+       }
+       .buttonPedido:hover{
+           background-color: #5E06A1;
+           color: white;
+       }
+    </style>
+</head>
+<body>
+    <div class="fundo">
+        <header>
+            
+            <div>
+                <a href="https://github.com/teuz159"><img src="./images/github.png" style="width: 40px;"></a>
+            </div>
+            <div class="logo"><a href="http://127.0.0.1:5500/index.html"><img src="./images/logo.png" style="width: 150px;"></a></div>
+            <div>
+                <a href="https://www.linkedin.com/in/matheus-souza-marques-69038522a/"><img src="./images/linkedin.png" style="width: 40px;"></a>
+            </div>
+        </header>
+        <section>
+            <div class="produtos">
+                <div class="pesquisa">
+                    <div style="background-color: white; width: 40px; border: 1px solid black; border-top-left-radius: 15px; border-end-start-radius: 15px; cursor: pointer;" onclick="getProduct()"><img src="./images/pesquisa.png" style="width: 40px;"></div>
+                    <div><input type="search" name="serch" placeholder="Pesquise pelo produto" id="serch" style="height: 46px; border-end-end-radius: 15px; border-top-right-radius: 15px; border: 1px solid black; width: 300px;"></div>
+                </div>
+                <div class="listaProdutos" id="ListaDeProdutos"></div>
+            </div>
+        </section>
+        <aside>
+            <div class="deco">
+                <div class="pedido" id="pedido"> 
+                    <p class="titulo">Pedidos</p>
+                    <div class="order" id="order"></div>
+                    <div class="info">
+                    <div id="valorOrder" style="display: flex; justify-content: space-between;">
+                        <p>Valor</p>
+                        <p>R$ 0,00</p>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <p>Troco</p>
+                        <p>0</p>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <p>Forma de Pagamento</p>
+                        <select name="opcaoPagamento" id="opcaoPagamento">
+                            <option value="dinheiro">Dinheiro</option>
+                            <option value="pix">Pix</option>
+                            <option value="cartao">Cartão</option>
+                        </select>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <p>Nome</p>
+                        <input type="text" name="authorOrder" id="authorOrder">
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <p>CPF</p>
+                        <input type="text" name="cpfOrder" id="cpfOrder">
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <p>Mesa</p>
+                        <input type="number" name="mesaOrder" id="mesaOrder" min="1" max="10">
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <p>Observação</p>
+                        <input type="text" name="observationOrder" id="observationOrder">
+                    </div>
+                    <div class="button">
+                        <button onclick="postOrder()" class="buttonPedido">Realizar Pedido</button>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </aside>
+        
+    </div>
+</body>
+</html>

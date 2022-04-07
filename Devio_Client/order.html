@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela do Pedido - Stark Villa</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="order.js" type="text/javascript" async></script>
+
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            font-family: Montserrat;
+        }
+        section{
+            background-color:#5E06A1;
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto 1fr;
+        }
+        .logo {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 1;
+            grid-row-end: 2;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .pedido{
+            box-sizing: border-box;
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 2;
+            grid-row-end: 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .order{
+            box-sizing: border-box;
+            background-color: white;
+            width: 30%;
+            height: 600px;
+            border-radius: 10px;
+            padding: 15px;
+        }
+        .titulo{
+            font-size: 30px;
+            font-weight: bold;
+            color: #5E06A1;
+            margin-bottom: 10px;
+            font-family: Beau Rivage;
+            font-size: 50px;
+        }
+       
+        @media only screen and (max-width: 1100px) {
+            .order{
+                width: 50%;
+            }
+        }
+        @media only screen and (max-width: 420px) {
+            .order{
+                width: 300px;
+                height: 500px;
+            }
+        }
+        .productsOrder{
+            border-radius: 5px;
+            height: 50%;
+            width: 100%;
+            overflow-y: scroll;
+        box-shadow: 0 0 5px rgba(0,0,0,0.6);
+        padding: 5px;
+        
+        }
+        .productsOrder::-webkit-scrollbar{
+    width: 12px;
+    border: 1px solid rgb(200,200,200);
+    display: none;
+}
+        .estiloDIV{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .deco{
+            border: 1px solid black;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="logo">
+            <img src="images/logo2.png" style="width: 10%;" alt="">
+        </div>
+        <div class="pedido">
+            <div class="order">
+                <div class="titulo">
+                    <p class="titulo">Pedido</p>
+                    
+                </div>
+                <div class="productsOrder" id="productsOrder"></div>
+                <div class="info">
+                    <div class="estiloDIV">
+                        <p>Valor</p>
+                        <p id="valorOrder">R$ 0,00</p>
+                    </div>
+                    <div class="estiloDIV">
+                        <p>Nome</p>
+                        <p id="clientOrder"></p>
+                    </div>
+                    <div class="estiloDIV">
+                        <p>Forma de Pagamento</p>
+                        <p id="pagamentoOrder"></p>
+                    </div>
+                    <div class="estiloDIV">
+                        <p>Observação: </p>
+                        <p id="observacaoOrder"></p>
+                    </div>
+                    <div class="estiloDIV">
+                        <p>Mesa</p>
+                        <p id="mesaOrder"></p>
+                    </div>
+                    <div class="estiloDIV">
+                        <p>Status do pedido</p>
+                        <div class="deco"><p id="statusPedido"></p></div>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </section>
+</body>
+</html>

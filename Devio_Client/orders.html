@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stark Villa - Admin</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="orders.js" type="text/javascript" async></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            font-family: Montserrat;
+        }
+         body{
+            height: 100vh;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: 25% 75%;
+            grid-template-rows: 1fr;
+         }
+        aside{
+            background-color: #5E06A1;
+            grid-column-start: 1;
+            grid-column-end: 2;
+            text-align: center;
+            
+        }
+        section{
+            background-color: white;
+            grid-column-start: 2;
+            grid-column-end: 3;
+            display: grid;
+            grid-template-rows: auto 1fr;
+            
+        }
+        #listaDeProdutos{
+            border-radius: 5px;
+            height: 250px;
+            width: 100%;
+            overflow-y: scroll;
+        box-shadow: 0 0 5px rgba(0,0,0,0.6);
+        padding: 5px;
+        background-color: white;
+        margin-bottom: 15px;
+        }
+        #listaDeProdutos::-webkit-scrollbar{
+            width: 12px;
+    border: 1px solid rgb(200,200,200);
+    display: none;
+}
+        section h2{
+            text-align: center;
+            grid-row-start: 1;
+            grid-row-end: 2;
+            margin: 20px;
+            color: #5E06A1;
+        }
+        aside div button{
+            background-color: white;
+            padding: 10px;
+            width: 50%;
+            color: #5E06A1;
+            border: none;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 5px;
+            margin: 10px;
+            cursor: pointer;
+            
+        }
+        #listaPedidos{
+            height: auto;
+            grid-row-start: 2;
+            grid-row-end: 3;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            justify-items: center;
+        }
+        #order{
+            box-sizing: border-box;
+            background-color: white;
+            box-shadow: 0 0 5px rgba(0,0,0,0.6);
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <aside>
+        <div>
+            <div>
+                <img src="images/logo2.png" alt="" style="width: 220px;">
+                <button onclick="getOrders()">Todos os Pedidos</button><br>
+                <button onclick="getOrdersProcessing()">Pedidos recebidos</button><br>
+                <button onclick="getOrdersProduction()">Pedidos em Produção</button><br>
+                <button onclick="getOrdersWithdrawal()">Pedidos para Retirada</button><br>
+                <button onclick="getOrdersFinished()">Pedidos Finalizados</button>
+            </div>
+        </div>
+    </aside>
+    <section>
+        <h2>Pedidos</h2>
+        <div id="listaPedidos"></div>
+    </section>
+</body>
+</html>
